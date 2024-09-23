@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 指定这是一个Logback的configuration文件 -->
+<configuration scan="true" scanPeriod="10 minutes">
+    <!-- 开启配置扫描，每10分钟检查一次配置文件是否有修改 -->
+
+    <appender name="stdot" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 定义一个名为stdot的控制台输出appender -->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <!-- 设置日志输出格式 -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss,GMT+8} [%p][%c][%M][%L]-> %m%n</pattern>
+            <!-- 日志格式化信息，包括日期、级别、类名、方法名、行号以及消息 -->
+        </layout>
+    </appender>
+
+    <springProperty scope="context" name="log.path" source="project.folder"/>
+    <springProperty scope="context" name="log.root.level" source="log.root.level"/>
+    <!-- 使用Spring属性来设置日志路径和根logger的级别 -->
+
+    <property name="LOG_FOLDER" value="logs"/>
+    <property name="LOG_FILE_NAME" value="easypan.log"/>
+    <!-- 定义一些常用的属性 -->
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 定义一个名为file的滚动文件输出appender -->
+        <file>${log.path}/${LOG_FOLDER}/${LOG_FILE_NAME}</file>
+        <!-- 指定日志文件的位置 -->
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 指定滚动策略为基于时间的 -->
+            <FileNamePattern>${log.path}/${LOG_FOLDER}/${LOG_FILE_NAME}.%d{yyyyMMdd}.%i</FileNamePattern>
+            <!-- 文件命名模式，每天产生一个新的日志文件 -->
+
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+            <!-- 启动时清理历史日志文件 -->
+
+            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>20MB</MaxFileSize>
+                <!-- 日志文件达到20MB时触发滚动 -->
+            </TimeBasedFileNamingAndTriggeringPolicy>
+
+            <maxHistory>30</maxHistory>
+            <!-- 保留最多30个历史日志文件 -->
+        </rollingPolicy>
+
+        <encoder>
+            <charset>utf-8</charset>
+            <!-- 指定编码为UTF-8 -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss,GMT+8} [%p][%c][%M][%L]-> %m%n</pattern>
+            <!-- 输出格式与控制台相同 -->
+        </encoder>
+
+        <append>false</append>
+        <!-- 输出模式为覆盖而不是追加 -->
+
+        <prudent>false</prudent>
+        <!-- 不启用谨慎模式 -->
+    </appender>
+
+    <root level="${log.root.level}">
+        <!-- 根logger的级别通过Spring属性设置 -->
+        <appender-ref ref="stdot"/>
+        <!-- 将控制台输出附加到根logger -->
+        <appender-ref ref="file"/>
+        <!-- 将文件输出附加到根logger -->
+    </root>
+
+</configuration>

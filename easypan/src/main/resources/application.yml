@@ -1,0 +1,84 @@
+#admin:
+#  emails: test@qq.com
+#dev: false
+#log:
+#  root:
+#    level: info
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  global-config:
+#    db-config:
+#      logic-delete-value: 1
+#      logic-not-delete-value: 0
+#  mapper-locations: classpath:mapper/*.xml
+#project:
+#  folder: /Users/swcode/Documents/webser/web_app/easypan
+#qq:
+#  app:
+#    id: 12333
+#    key: 2222222
+#  url:
+#    access:
+#      token: https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&client_id=%s&client_secret=%s&code=%s&redirect_uri=%s
+#    authorization: https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=%s&redirect_uri=%s&state=%s
+#    openid: https://graph.qq.com/oauth2.0/me?access_token=%S
+#    redirect: http://easypan.wuhancoder.com/qqlogincalback
+#    user:
+#      info: https://graph.qq.com/user/get_user_info?access_token=%s&oauth_consumer_key=%s&openid=%s
+#server:
+#  port: 7090
+#  servlet:
+#    context-path: /api
+#    session:
+#      timeout: PT60M
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    hikari:
+#      auto-commit: true
+#      connection-test-query: SELECT 1
+#      connection-timeout: 30000
+#      idle-timeout: 180000
+#      max-lifetime: 1800000
+#      maximum-pool-size: 10
+#      minimum-idle: 5
+#      pool-name: HikariCPDatasource
+#    password: 123456
+#    url: jdbc:mysql://127.0.0.1:3306/easypan?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+#    username: zhl
+#  mail:
+#    default-encoding: UTF-8
+#    host: smtp.qq.com
+#    password: tykyolipdlapdifi
+#    port: 465
+#    properties:
+#      mail:
+#        debug: true
+#        smtp:
+#          socketFactory:
+#            class: javax.net.ssl.SSLSocketFactory
+#    username: 2627311935@qq.com
+#  mvc:
+#    favicon:
+#      enable: false
+#    throw-exception-if-no-handler-found: true
+#  redis:
+#    database: 0
+#    host: 127.0.0.1
+#    jedis:
+#      pool:
+#        max-active: 20
+#        max-idle: 10
+#        max-wait: -1
+#        min-idle: 0
+#    password: swx852345
+#    port: 6379
+#    timeout: 2000
+#  servlet:
+#    multipart:
+#      max-file-size: 15MB
+#      max-request-size: 15MB
+#  web:
+#    resources:
+#      add-mappings: false

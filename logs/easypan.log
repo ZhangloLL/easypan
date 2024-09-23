@@ -1,0 +1,63 @@
+2024-09-23 22:13:10 [INFO][com.easypan.EasyPanApplication][logStarting][55]-> Starting EasyPanApplication using Java 1.8.0_172 on DESKTOP-KMKS3I7 with PID 9528 (E:\qiuzhao\project\CloudStorage\easypan\target\classes started by CKY-ZHANG in E:\qiuzhao\project\CloudStorage)
+2024-09-23 22:13:10 [INFO][com.easypan.EasyPanApplication][logStartupProfileInfo][635]-> No active profile set, falling back to default profiles: default
+2024-09-23 22:13:11 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][doScan][166]-> No MyBatis mapper was found in '[com.easypan]' package. Please check your configuration.
+2024-09-23 22:13:11 [INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate][multipleStoresDetected][262]-> Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-09-23 22:13:11 [INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate][registerRepositoriesIn][132]-> Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-09-23 22:13:11 [INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate][registerRepositoriesIn][201]-> Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+2024-09-23 22:13:11 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][initialize][108]-> Tomcat initialized with port(s): 9000 (http)
+2024-09-23 22:13:11 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Initializing ProtocolHandler ["http-nio-9000"]
+2024-09-23 22:13:11 [INFO][org.apache.catalina.core.StandardService][log][173]-> Starting service [Tomcat]
+2024-09-23 22:13:11 [INFO][org.apache.catalina.core.StandardEngine][log][173]-> Starting Servlet engine: [Apache Tomcat/9.0.55]
+2024-09-23 22:13:11 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring embedded WebApplicationContext
+2024-09-23 22:13:11 [INFO][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext][prepareWebApplicationContext][290]-> Root WebApplicationContext: initialization completed in 696 ms
+2024-09-23 22:13:12 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Starting ProtocolHandler ["http-nio-9000"]
+2024-09-23 22:13:12 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][start][220]-> Tomcat started on port(s): 9000 (http) with context path '/api'
+2024-09-23 22:13:12 [INFO][com.easypan.EasyPanApplication][logStarted][61]-> Started EasyPanApplication in 1.569 seconds (JVM running for 2.122)
+2024-09-23 22:14:22 [INFO][com.easypan.EasyPanApplication][logStarting][55]-> Starting EasyPanApplication using Java 1.8.0_172 on DESKTOP-KMKS3I7 with PID 15436 (E:\qiuzhao\project\CloudStorage\easypan\target\classes started by CKY-ZHANG in E:\qiuzhao\project\CloudStorage)
+2024-09-23 22:14:22 [INFO][com.easypan.EasyPanApplication][logStartupProfileInfo][635]-> No active profile set, falling back to default profiles: default
+2024-09-23 22:14:22 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][doScan][166]-> No MyBatis mapper was found in '[com.easypan]' package. Please check your configuration.
+2024-09-23 22:14:22 [INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate][multipleStoresDetected][262]-> Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-09-23 22:14:22 [INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate][registerRepositoriesIn][132]-> Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-09-23 22:14:22 [INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate][registerRepositoriesIn][201]-> Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+2024-09-23 22:14:22 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][initialize][108]-> Tomcat initialized with port(s): 9000 (http)
+2024-09-23 22:14:22 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Initializing ProtocolHandler ["http-nio-9000"]
+2024-09-23 22:14:22 [INFO][org.apache.catalina.core.StandardService][log][173]-> Starting service [Tomcat]
+2024-09-23 22:14:22 [INFO][org.apache.catalina.core.StandardEngine][log][173]-> Starting Servlet engine: [Apache Tomcat/9.0.55]
+2024-09-23 22:14:22 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring embedded WebApplicationContext
+2024-09-23 22:14:22 [INFO][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext][prepareWebApplicationContext][290]-> Root WebApplicationContext: initialization completed in 581 ms
+2024-09-23 22:14:23 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Starting ProtocolHandler ["http-nio-9000"]
+2024-09-23 22:14:23 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][start][220]-> Tomcat started on port(s): 9000 (http) with context path '/api'
+2024-09-23 22:14:23 [INFO][com.easypan.EasyPanApplication][logStarted][61]-> Started EasyPanApplication in 1.26 seconds (JVM running for 1.787)
+2024-09-23 22:15:05 [INFO][com.easypan.EasyPanApplication][logStarting][55]-> Starting EasyPanApplication using Java 1.8.0_172 on DESKTOP-KMKS3I7 with PID 18920 (E:\qiuzhao\project\CloudStorage\easypan\target\classes started by CKY-ZHANG in E:\qiuzhao\project\CloudStorage)
+2024-09-23 22:15:05 [INFO][com.easypan.EasyPanApplication][logStartupProfileInfo][635]-> No active profile set, falling back to default profiles: default
+2024-09-23 22:15:05 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][doScan][166]-> No MyBatis mapper was found in '[com.easypan]' package. Please check your configuration.
+2024-09-23 22:15:05 [INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate][multipleStoresDetected][262]-> Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-09-23 22:15:05 [INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate][registerRepositoriesIn][132]-> Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-09-23 22:15:05 [INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate][registerRepositoriesIn][201]-> Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2024-09-23 22:15:06 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][initialize][108]-> Tomcat initialized with port(s): 9000 (http)
+2024-09-23 22:15:06 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Initializing ProtocolHandler ["http-nio-9000"]
+2024-09-23 22:15:06 [INFO][org.apache.catalina.core.StandardService][log][173]-> Starting service [Tomcat]
+2024-09-23 22:15:06 [INFO][org.apache.catalina.core.StandardEngine][log][173]-> Starting Servlet engine: [Apache Tomcat/9.0.55]
+2024-09-23 22:15:06 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring embedded WebApplicationContext
+2024-09-23 22:15:06 [INFO][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext][prepareWebApplicationContext][290]-> Root WebApplicationContext: initialization completed in 573 ms
+2024-09-23 22:15:06 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Starting ProtocolHandler ["http-nio-9000"]
+2024-09-23 22:15:06 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][start][220]-> Tomcat started on port(s): 9000 (http) with context path '/api'
+2024-09-23 22:15:06 [INFO][com.easypan.EasyPanApplication][logStarted][61]-> Started EasyPanApplication in 1.257 seconds (JVM running for 1.8)
+2024-09-23 22:28:48 [INFO][com.easypan.EasyPanApplication][logStarting][55]-> Starting EasyPanApplication using Java 1.8.0_172 on DESKTOP-KMKS3I7 with PID 17132 (E:\qiuzhao\project\CloudStorage\easypan\target\classes started by CKY-ZHANG in E:\qiuzhao\project\CloudStorage)
+2024-09-23 22:28:48 [INFO][com.easypan.EasyPanApplication][logStartupProfileInfo][635]-> No active profile set, falling back to default profiles: default
+2024-09-23 22:28:48 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][doScan][166]-> No MyBatis mapper was found in '[com.easypan]' package. Please check your configuration.
+2024-09-23 22:28:48 [INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate][multipleStoresDetected][262]-> Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-09-23 22:28:48 [INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate][registerRepositoriesIn][132]-> Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-09-23 22:28:48 [INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate][registerRepositoriesIn][201]-> Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+2024-09-23 22:28:49 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][initialize][108]-> Tomcat initialized with port(s): 9000 (http)
+2024-09-23 22:28:49 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Initializing ProtocolHandler ["http-nio-9000"]
+2024-09-23 22:28:49 [INFO][org.apache.catalina.core.StandardService][log][173]-> Starting service [Tomcat]
+2024-09-23 22:28:49 [INFO][org.apache.catalina.core.StandardEngine][log][173]-> Starting Servlet engine: [Apache Tomcat/9.0.55]
+2024-09-23 22:28:49 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring embedded WebApplicationContext
+2024-09-23 22:28:49 [INFO][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext][prepareWebApplicationContext][290]-> Root WebApplicationContext: initialization completed in 603 ms
+2024-09-23 22:28:49 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Starting ProtocolHandler ["http-nio-9000"]
+2024-09-23 22:28:49 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][start][220]-> Tomcat started on port(s): 9000 (http) with context path '/api'
+2024-09-23 22:28:49 [INFO][com.easypan.EasyPanApplication][logStarted][61]-> Started EasyPanApplication in 1.311 seconds (JVM running for 1.848)
+2024-09-23 22:29:35 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-23 22:29:35 [INFO][org.springframework.web.servlet.DispatcherServlet][initServletBean][525]-> Initializing Servlet 'dispatcherServlet'
+2024-09-23 22:29:35 [INFO][org.springframework.web.servlet.DispatcherServlet][initServletBean][547]-> Completed initialization in 0 ms
