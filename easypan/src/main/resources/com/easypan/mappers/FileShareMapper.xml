@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easypan.mappers.FileShareMapper">
+
+	<!--实体映射-->
+	<resultMap id="base_result_map" type="com.easypan.entity.po.FileShare">
+		<!--分享ID-->
+		<result column="share_id" property="shareId"  />
+		<!--文件ID-->
+		<result column="file_id" property="fileId"  />
+		<!--用户ID-->
+		<result column="user_id" property="userId"  />
+		<!--有效期类型 0:1天 1:7天 2:30天 3:永久有效-->
+		<result column="valid_type" property="validType"  />
+		<!--失效时间-->
+		<result column="expire_time" property="expireTime"  />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="base_column_list">
+		 share_id,file_id,user_id,valid_type,expire_time
+		 
+	</sql>
+
+	<sql id="base_condition_filed">
+			<if test="query.shareId != null and query.shareId!=''">
+				 and  share_id = #{query.shareId}
+			</if>
+			<if test="query.fileId != null and query.fileId!=''">
+				 and  file_id = #{query.fileId}
+			</if>
+			<if test="query.userId != null and query.userId!=''">
+				 and  user_id = #{query.userId}
+			</if>
+			<if test="query.validType != null">
+				 and  valid_type = #{query.validType}
+			</if>
+			<if test="query.expireTime != null and query.expireTime!=''">
+				 <![CDATA[ and  expire_time=str_to_date(#{query.expireTime}, '%Y-%m-%d') ]]>
+			</if>
+	</sql>
+	<!-- 通用条件列-->
+	<sql id="base_condition">
+	 <where>
+		 <include refid="base_condition_filed" />
+	 </where>
+	</sql>
+
+	<!-- 通用查询条件列-->
+	<sql id="query_condition">
+	 <where>
+			<include refid="base_condition_filed" />
+			<if test="query.shareIdFuzzy!= null  and query.shareIdFuzzy!=''">
+				 and  share_id like concat('%', #{query.shareIdFuzzy}, '%')
+			</if>
+			<if test="query.fileIdFuzzy!= null  and query.fileIdFuzzy!=''">
+				 and  file_id like concat('%', #{query.fileIdFuzzy}, '%')
+			</if>
+			<if test="query.userIdFuzzy!= null  and query.userIdFuzzy!=''">
+				 and  user_id like concat('%', #{query.userIdFuzzy}, '%')
+			</if>
+			<if test="query.expireTimeStart!= null and query.expireTimeStart!=''">
+				 <![CDATA[ and  expire_time>=str_to_date(#{query.expireTimeStart}, '%Y-%m-%d') ]]>
+			</if>
+			<if test="query.expireTimeEnd!= null and query.expireTimeEnd!=''">
+				 <![CDATA[ and  expire_time< date_sub(str_to_date(#{query.expireTimeEnd},'%Y-%m-%d'),interval -1 day) ]]>
+			</if>
+	 </where>
+	</sql>
+
+	<!-- 查询集合-->
+	<select id="selectList" resultMap="base_result_map" >
+		 SELECT <include refid="base_column_list" /> FROM file_share <include refid="query_condition" />
+		 <if test="query.orderBy!=null">
+			 order by ${query.orderBy}
+		 </if>
+		 <if test="query.simplePage!=null">
+			 limit #{query.simplePage.start},#{query.simplePage.end}
+		 </if>
+	</select>
+
+	<!-- 查询数量-->
+	<select id="selectCount" resultType="java.lang.Integer" >
+		 SELECT count(1) FROM file_share <include refid="query_condition" />
+	</select>
+
+	<!-- 插入 （匹配有值的字段）-->
+	<insert id="insert" parameterType="com.easypan.entity.po.FileShare">
+		 INSERT INTO file_share
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="bean.shareId != null">
+				 share_id,
+			</if>
+			<if test="bean.fileId != null">
+				 file_id,
+			</if>
+			<if test="bean.userId != null">
+				 user_id,
+			</if>
+			<if test="bean.validType != null">
+				 valid_type,
+			</if>
+			<if test="bean.expireTime != null">
+				 expire_time,
+			</if>
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="bean.shareId!=null">
+				 #{bean.shareId},
+			</if>
+			<if test="bean.fileId!=null">
+				 #{bean.fileId},
+			</if>
+			<if test="bean.userId!=null">
+				 #{bean.userId},
+			</if>
+			<if test="bean.validType!=null">
+				 #{bean.validType},
+			</if>
+			<if test="bean.expireTime!=null">
+				 #{bean.expireTime},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 插入或者更新 （匹配有值的字段）-->
+	<insert id="insertOrUpdate" parameterType="com.easypan.entity.po.FileShare">
+		 INSERT INTO file_share
+		 <trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bean.shareId != null">
+				 share_id,
+			</if>
+			<if test="bean.fileId != null">
+				 file_id,
+			</if>
+			<if test="bean.userId != null">
+				 user_id,
+			</if>
+			<if test="bean.validType != null">
+				 valid_type,
+			</if>
+			<if test="bean.expireTime != null">
+				 expire_time,
+			</if>
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="bean.shareId!=null">
+				 #{bean.shareId},
+			</if>
+			<if test="bean.fileId!=null">
+				 #{bean.fileId},
+			</if>
+			<if test="bean.userId!=null">
+				 #{bean.userId},
+			</if>
+			<if test="bean.validType!=null">
+				 #{bean.validType},
+			</if>
+			<if test="bean.expireTime!=null">
+				 #{bean.expireTime},
+			</if>
+		 </trim>
+		 on DUPLICATE key update 
+		 <trim prefix="" suffix="" suffixOverrides=",">
+			<if test="bean.shareId!=null">
+				 share_id = VALUES(share_id),
+			</if>
+			<if test="bean.fileId!=null">
+				 file_id = VALUES(file_id),
+			</if>
+			<if test="bean.userId!=null">
+				 user_id = VALUES(user_id),
+			</if>
+			<if test="bean.validType!=null">
+				 valid_type = VALUES(valid_type),
+			</if>
+			<if test="bean.expireTime!=null">
+				 expire_time = VALUES(expire_time),
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 添加 （批量插入）-->
+	<insert id="insertBatch" parameterType="com.easypan.entity.po.FileShare">
+		 INSERT INTO file_share(
+			 share_id,
+			 file_id,
+			 user_id,
+			 valid_type,
+			 expire_time
+		 )values
+		 <foreach collection="list" item="item" separator=",">
+			 (
+				 #{item.shareId},
+				 #{item.fileId},
+				 #{item.userId},
+				 #{item.validType},
+				 #{item.expireTime}
+			 )
+		 </foreach>
+	</insert>
+
+	<!-- 批量新增修改 （批量插入）-->
+	<insert id="insertOrUpdateBatch" parameterType="com.easypan.entity.po.FileShare">
+		 INSERT INTO file_share(
+			 share_id,
+			 file_id,
+			 user_id,
+			 valid_type,
+			 expire_time
+		 )values
+		 <foreach collection="list" item="item" separator=",">
+			 (
+				 #{item.shareId},
+				 #{item.fileId},
+				 #{item.userId},
+				 #{item.validType},
+				 #{item.expireTime}
+			 )
+		 </foreach>
+			on DUPLICATE key update 
+			share_id = VALUES(share_id),
+			file_id = VALUES(file_id),
+			user_id = VALUES(user_id),
+			valid_type = VALUES(valid_type),
+			expire_time = VALUES(expire_time)
+	</insert>
+
+	<!--多条件修改-->
+	<update id="updateByParam" parameterType="com.easypan.entity.query.FileShareQuery">
+		 UPDATE file_share
+ 		 <set> 
+			<if test="bean.shareId != null">
+				 share_id = #{bean.shareId},
+			</if>
+			<if test="bean.fileId != null">
+				 file_id = #{bean.fileId},
+			</if>
+			<if test="bean.userId != null">
+				 user_id = #{bean.userId},
+			</if>
+			<if test="bean.validType != null">
+				 valid_type = #{bean.validType},
+			</if>
+			<if test="bean.expireTime != null">
+				 expire_time = #{bean.expireTime},
+			</if>
+ 		 </set>
+ 		 <include refid="query_condition" />
+	</update>
+
+	<!--多条件删除-->
+	<delete id="deleteByParam">
+		 delete from file_share
+ 		 <include refid="query_condition" />
+	</delete>
+
+	<!-- 根据ShareId修改-->
+	<update id="updateByShareId" parameterType="com.easypan.entity.po.FileShare">
+		 UPDATE file_share
+ 		 <set> 
+			<if test="bean.fileId != null">
+				 file_id = #{bean.fileId},
+			</if>
+			<if test="bean.userId != null">
+				 user_id = #{bean.userId},
+			</if>
+			<if test="bean.validType != null">
+				 valid_type = #{bean.validType},
+			</if>
+			<if test="bean.expireTime != null">
+				 expire_time = #{bean.expireTime},
+			</if>
+ 		 </set>
+ 		 where share_id=#{shareId}
+	</update>
+
+	<!-- 根据ShareId删除-->
+	<delete id="deleteByShareId">
+		delete from file_share where share_id=#{shareId}
+	</delete>
+
+	<!-- 根据PrimaryKey获取对象-->
+	<select id="selectByShareId" resultMap="base_result_map" >
+		select <include refid="base_column_list" /> from file_share where share_id=#{shareId}
+	</select>
+
+</mapper>

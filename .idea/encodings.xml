@@ -2,7 +2,14 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/easypan/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/easypan/src/main/java/com/easypan/controller" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/easypan/src/main/java/com/easypan/entity" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/easypan/src/main/java/com/easypan/exception" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/easypan/src/main/java/com/easypan/mappers" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/easypan/src/main/java/com/easypan/service" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/easypan/src/main/java/com/easypan/utils" charset="GBK" />
     <file url="file://$PROJECT_DIR$/easypan/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/easypan/src/main/resources/com" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

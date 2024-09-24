@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easypan.mappers.UserInfoMapper">
+
+	<!--实体映射-->
+	<resultMap id="base_result_map" type="com.easypan.entity.po.UserInfo">
+		<!---->
+		<id column="id" property="id"  />
+		<!---->
+		<result column="create_time" property="createTime"  />
+		<!---->
+		<result column="age" property="age"  />
+		<!---->
+		<result column="code" property="code"  />
+		<!---->
+		<result column="email" property="email"  />
+		<!---->
+		<result column="status" property="status"  />
+		<!---->
+		<result column="code_02" property="code02"  />
+		<!---->
+		<result column="code_03" property="code03"  />
+		<!---->
+		<result column="test" property="test"  />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="base_column_list">
+		 id,create_time,age,code,email,
+		 status,code_02,code_03,test
+	</sql>
+
+	<sql id="base_condition_filed">
+			<if test="query.id != null">
+				 and  id = #{query.id}
+			</if>
+			<if test="query.createTime != null and query.createTime!=''">
+				 <![CDATA[ and  create_time=str_to_date(#{query.createTime}, '%Y-%m-%d') ]]>
+			</if>
+			<if test="query.age != null">
+				 and  age = #{query.age}
+			</if>
+			<if test="query.code != null and query.code!=''">
+				 and  code = #{query.code}
+			</if>
+			<if test="query.email != null and query.email!=''">
+				 and  email = #{query.email}
+			</if>
+			<if test="query.status != null">
+				 and  status = #{query.status}
+			</if>
+			<if test="query.code02 != null and query.code02!=''">
+				 and  code_02 = #{query.code02}
+			</if>
+			<if test="query.code03 != null and query.code03!=''">
+				 and  code_03 = #{query.code03}
+			</if>
+			<if test="query.test != null">
+				 and  test = #{query.test}
+			</if>
+	</sql>
+	<!-- 通用条件列-->
+	<sql id="base_condition">
+	 <where>
+		 <include refid="base_condition_filed" />
+	 </where>
+	</sql>
+
+	<!-- 通用查询条件列-->
+	<sql id="query_condition">
+	 <where>
+			<include refid="base_condition_filed" />
+			<if test="query.createTimeStart!= null and query.createTimeStart!=''">
+				 <![CDATA[ and  create_time>=str_to_date(#{query.createTimeStart}, '%Y-%m-%d') ]]>
+			</if>
+			<if test="query.createTimeEnd!= null and query.createTimeEnd!=''">
+				 <![CDATA[ and  create_time< date_sub(str_to_date(#{query.createTimeEnd},'%Y-%m-%d'),interval -1 day) ]]>
+			</if>
+			<if test="query.codeFuzzy!= null  and query.codeFuzzy!=''">
+				 and  code like concat('%', #{query.codeFuzzy}, '%')
+			</if>
+			<if test="query.emailFuzzy!= null  and query.emailFuzzy!=''">
+				 and  email like concat('%', #{query.emailFuzzy}, '%')
+			</if>
+			<if test="query.code02Fuzzy!= null  and query.code02Fuzzy!=''">
+				 and  code_02 like concat('%', #{query.code02Fuzzy}, '%')
+			</if>
+			<if test="query.code03Fuzzy!= null  and query.code03Fuzzy!=''">
+				 and  code_03 like concat('%', #{query.code03Fuzzy}, '%')
+			</if>
+	 </where>
+	</sql>
+
+	<!-- 查询集合-->
+	<select id="selectList" resultMap="base_result_map" >
+		 SELECT <include refid="base_column_list" /> FROM user_info <include refid="query_condition" />
+		 <if test="query.orderBy!=null">
+			 order by ${query.orderBy}
+		 </if>
+		 <if test="query.simplePage!=null">
+			 limit #{query.simplePage.start},#{query.simplePage.end}
+		 </if>
+	</select>
+
+	<!-- 查询数量-->
+	<select id="selectCount" resultType="java.lang.Integer" >
+		 SELECT count(1) FROM user_info <include refid="query_condition" />
+	</select>
+
+	<!-- 插入 （匹配有值的字段）-->
+	<insert id="insert" parameterType="com.easypan.entity.po.UserInfo">
+		<selectKey keyProperty="bean.id" resultType="Integer" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		 INSERT INTO user_info
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="bean.createTime != null">
+				 create_time,
+			</if>
+			<if test="bean.age != null">
+				 age,
+			</if>
+			<if test="bean.code != null">
+				 code,
+			</if>
+			<if test="bean.email != null">
+				 email,
+			</if>
+			<if test="bean.status != null">
+				 status,
+			</if>
+			<if test="bean.code02 != null">
+				 code_02,
+			</if>
+			<if test="bean.code03 != null">
+				 code_03,
+			</if>
+			<if test="bean.test != null">
+				 test,
+			</if>
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="bean.createTime!=null">
+				 #{bean.createTime},
+			</if>
+			<if test="bean.age!=null">
+				 #{bean.age},
+			</if>
+			<if test="bean.code!=null">
+				 #{bean.code},
+			</if>
+			<if test="bean.email!=null">
+				 #{bean.email},
+			</if>
+			<if test="bean.status!=null">
+				 #{bean.status},
+			</if>
+			<if test="bean.code02!=null">
+				 #{bean.code02},
+			</if>
+			<if test="bean.code03!=null">
+				 #{bean.code03},
+			</if>
+			<if test="bean.test!=null">
+				 #{bean.test},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 插入或者更新 （匹配有值的字段）-->
+	<insert id="insertOrUpdate" parameterType="com.easypan.entity.po.UserInfo">
+		 INSERT INTO user_info
+		 <trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bean.id != null">
+				 id,
+			</if>
+			<if test="bean.createTime != null">
+				 create_time,
+			</if>
+			<if test="bean.age != null">
+				 age,
+			</if>
+			<if test="bean.code != null">
+				 code,
+			</if>
+			<if test="bean.email != null">
+				 email,
+			</if>
+			<if test="bean.status != null">
+				 status,
+			</if>
+			<if test="bean.code02 != null">
+				 code_02,
+			</if>
+			<if test="bean.code03 != null">
+				 code_03,
+			</if>
+			<if test="bean.test != null">
+				 test,
+			</if>
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="bean.id!=null">
+				 #{bean.id},
+			</if>
+			<if test="bean.createTime!=null">
+				 #{bean.createTime},
+			</if>
+			<if test="bean.age!=null">
+				 #{bean.age},
+			</if>
+			<if test="bean.code!=null">
+				 #{bean.code},
+			</if>
+			<if test="bean.email!=null">
+				 #{bean.email},
+			</if>
+			<if test="bean.status!=null">
+				 #{bean.status},
+			</if>
+			<if test="bean.code02!=null">
+				 #{bean.code02},
+			</if>
+			<if test="bean.code03!=null">
+				 #{bean.code03},
+			</if>
+			<if test="bean.test!=null">
+				 #{bean.test},
+			</if>
+		 </trim>
+		 on DUPLICATE key update 
+		 <trim prefix="" suffix="" suffixOverrides=",">
+			<if test="bean.createTime!=null">
+				 create_time = VALUES(create_time),
+			</if>
+			<if test="bean.age!=null">
+				 age = VALUES(age),
+			</if>
+			<if test="bean.code!=null">
+				 code = VALUES(code),
+			</if>
+			<if test="bean.email!=null">
+				 email = VALUES(email),
+			</if>
+			<if test="bean.status!=null">
+				 status = VALUES(status),
+			</if>
+			<if test="bean.code02!=null">
+				 code_02 = VALUES(code_02),
+			</if>
+			<if test="bean.code03!=null">
+				 code_03 = VALUES(code_03),
+			</if>
+			<if test="bean.test!=null">
+				 test = VALUES(test),
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 添加 （批量插入）-->
+	<insert id="insertBatch" parameterType="com.easypan.entity.po.UserInfo" useGeneratedKeys="true" keyProperty="id">
+		 INSERT INTO user_info(
+			 create_time,
+			 age,
+			 code,
+			 email,
+			 status,
+			 code_02,
+			 code_03,
+			 test
+		 )values
+		 <foreach collection="list" item="item" separator=",">
+			 (
+				 #{item.createTime},
+				 #{item.age},
+				 #{item.code},
+				 #{item.email},
+				 #{item.status},
+				 #{item.code02},
+				 #{item.code03},
+				 #{item.test}
+			 )
+		 </foreach>
+	</insert>
+
+	<!-- 批量新增修改 （批量插入）-->
+	<insert id="insertOrUpdateBatch" parameterType="com.easypan.entity.po.UserInfo">
+		 INSERT INTO user_info(
+			 create_time,
+			 age,
+			 code,
+			 email,
+			 status,
+			 code_02,
+			 code_03,
+			 test
+		 )values
+		 <foreach collection="list" item="item" separator=",">
+			 (
+				 #{item.createTime},
+				 #{item.age},
+				 #{item.code},
+				 #{item.email},
+				 #{item.status},
+				 #{item.code02},
+				 #{item.code03},
+				 #{item.test}
+			 )
+		 </foreach>
+			on DUPLICATE key update 
+			create_time = VALUES(create_time),
+			age = VALUES(age),
+			code = VALUES(code),
+			email = VALUES(email),
+			status = VALUES(status),
+			code_02 = VALUES(code_02),
+			code_03 = VALUES(code_03),
+			test = VALUES(test)
+	</insert>
+
+	<!--多条件修改-->
+	<update id="updateByParam" parameterType="com.easypan.entity.query.UserInfoQuery">
+		 UPDATE user_info
+ 		 <set> 
+			<if test="bean.createTime != null">
+				 create_time = #{bean.createTime},
+			</if>
+			<if test="bean.age != null">
+				 age = #{bean.age},
+			</if>
+			<if test="bean.code != null">
+				 code = #{bean.code},
+			</if>
+			<if test="bean.email != null">
+				 email = #{bean.email},
+			</if>
+			<if test="bean.status != null">
+				 status = #{bean.status},
+			</if>
+			<if test="bean.code02 != null">
+				 code_02 = #{bean.code02},
+			</if>
+			<if test="bean.code03 != null">
+				 code_03 = #{bean.code03},
+			</if>
+			<if test="bean.test != null">
+				 test = #{bean.test},
+			</if>
+ 		 </set>
+ 		 <include refid="query_condition" />
+	</update>
+
+	<!--多条件删除-->
+	<delete id="deleteByParam">
+		 delete from user_info
+ 		 <include refid="query_condition" />
+	</delete>
+
+	<!-- 根据Id修改-->
+	<update id="updateById" parameterType="com.easypan.entity.po.UserInfo">
+		 UPDATE user_info
+ 		 <set> 
+			<if test="bean.createTime != null">
+				 create_time = #{bean.createTime},
+			</if>
+			<if test="bean.age != null">
+				 age = #{bean.age},
+			</if>
+			<if test="bean.code != null">
+				 code = #{bean.code},
+			</if>
+			<if test="bean.email != null">
+				 email = #{bean.email},
+			</if>
+			<if test="bean.status != null">
+				 status = #{bean.status},
+			</if>
+			<if test="bean.code02 != null">
+				 code_02 = #{bean.code02},
+			</if>
+			<if test="bean.code03 != null">
+				 code_03 = #{bean.code03},
+			</if>
+			<if test="bean.test != null">
+				 test = #{bean.test},
+			</if>
+ 		 </set>
+ 		 where id=#{id}
+	</update>
+
+	<!-- 根据Id删除-->
+	<delete id="deleteById">
+		delete from user_info where id=#{id}
+	</delete>
+
+	<!-- 根据PrimaryKey获取对象-->
+	<select id="selectById" resultMap="base_result_map" >
+		select <include refid="base_column_list" /> from user_info where id=#{id}
+	</select>
+
+</mapper>
